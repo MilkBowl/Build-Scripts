@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<project default="main">
+
+    <property environment="env"/>
+
+    <target name="main" depends="clean" description="Main target">
+	<echo>Retreiving Libraries</echo>
+	<echo>- CraftBukkit</echo>
+	<get src="http://ci.milkbowl.net/job/CraftBukkit/lastSuccessfulBuild/artifact/target/craftbukkit-0.0.1-SNAPSHOT.jar"
+		dest="bin/craftbukkit.jar" verbose="false" usetimestamp="true" />
+	<echo>- Administrate</echo>
+	<get src="http://ci.milkbowl.net/job/Administrate/lastSuccessfulBuild/artifact/Administrate.jar"
+		dest="bin/plugins/Administrate.jar" verbose="false" usetimestamp="true"/>
+	<echo>- AutoSave</echo>
+	<get src="http://ci.milkbowl.net/job/AutoSave/lastSuccessfulBuild/artifact/AutoSave.jar"
+		dest="bin/plugins/AutoSave.jar" verbose="false" usetimestamp="true"/>
+	<echo>- CombatEventsCore</echo>
+	<get src="http://ci.milkbowl.net/job/CombatEventsCore/lastSuccessfulBuild/artifact/CombatEventsCore.jar"
+		dest="bin/plugins/CombatEventsCore.jar" verbose="false" usetimestamp="true"/>
+	<echo>- CombatEventsBounty</echo>
+	<get src="http://ci.milkbowl.net/job/CombatEventsBounty/lastSuccessfulBuild/artifact/CombatEventsBounty.jar"
+		dest="bin/plugins/CombatEventsBounty.jar" verbose="false" usetimestamp="true"/>
+	<echo>- CombatEventsLoot</echo>
+	<get src="http://ci.milkbowl.net/job/CombatEventsLoot/lastSuccessfulBuild/artifact/CombatEventsLoot.jar"
+		dest="bin/plugins/CombatEventsLoot.jar" verbose="false" usetimestamp="true"/>
+	<echo>- CombatEventsPvP</echo>
+	<get src="http://ci.milkbowl.net/job/CombatEventsPvP/lastSuccessfulBuild/artifact/CombatEventsPvP.jar"
+		dest="bin/plugins/CombatEventsPvP.jar" verbose="false" usetimestamp="true"/>
+	<echo>- Karma</echo>
+	<get src="http://ci.milkbowl.net/job/Karma/lastSuccessfulBuild/artifact/Karma.jar"
+		dest="bin/plugins/Karma.jar" verbose="false" usetimestamp="true"/>
+	<echo>- LocalShops</echo>
+	<get src="http://ci.milkbowl.net/job/LocalShops/lastSuccessfulBuild/artifact/LocalShops.jar"
+		dest="bin/plugins/LocalShops.jar" verbose="false" usetimestamp="true"/>
+	<echo>- MultiHome</echo>
+	<get src="http://ci.milkbowl.net/job/MultiHome/lastSuccessfulBuild/artifact/MultiHome.jar"
+		dest="bin/plugins/MultiHome.jar" verbose="false" usetimestamp="true"/>
+	<echo>- Vault</echo>
+	<get src="http://ci.milkbowl.net/job/Vault/lastSuccessfulBuild/artifact/Vault.jar"
+		dest="bin/plugins/Vault.jar" verbose="false" usetimestamp="true"/>
+
+	<zip destfile="Craftbukkit-MilkBowl.zip">
+		<fileset dir="bin"/>
+	</zip>
+    </target>
+	
+    <target name="clean" description="Cleans project">
+	<echo>Cleaning</echo>
+	<delete failonerror="false">
+		<fileset dir="bin" includes="**/*" />
+	</delete>
+	<mkdir dir="bin"/>
+	<mkdir dir="bin/plugins"/>
+    </target>
+</project>
